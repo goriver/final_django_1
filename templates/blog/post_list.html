@@ -1,0 +1,29 @@
+
+{% extends 'blog/index.html'%}
+
+{% block content %}
+{% load static %}
+
+
+    <div class="container">
+        <h2><div class="recent">실시간 주식 KEYWORD</div></h2>
+        <div></div>
+        <img src= "{% static 'bootstrap/img/wordcloud.jpg' %}" class="rounded mx-auto d-block" width="800" alt="" />
+        <div>
+
+        <h2><div class="recent">공지</div></h2>
+        <ul class="list">
+            {% for post in posts %}
+            <li class="item">
+                <h3><a href="post/{{ post.pk }}">{{ post.title }}</a></h3>
+                <!-- <div class="content">{{ post.content|linebreaksbr }}</div> -->
+                <div class="info">
+                    <div class="published-date"><span>Date | </span>{{ post.published_date }}</div>
+                    <div class="author"><span>Author | </span>{{ post.author }}</div>
+                </div>
+                
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock%}

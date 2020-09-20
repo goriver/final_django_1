@@ -1,0 +1,14 @@
+{% extends 'blog/index.html' %}
+{% block content %}
+
+    <div class="container">
+        <ul class="list">
+            <li class="item">
+                <h3><a href="">{{ post.title }}</a></h3>
+                <div class="content">{{ post.content|linebreaksbr }}</div>
+                
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+

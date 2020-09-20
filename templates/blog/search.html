@@ -1,0 +1,26 @@
+{% extends 'blog/index.html' %}
+
+{% block content %}
+{% load static %}            
+<div class="container"> 
+    <div id="page-content-wrapper">
+        <h2><div class="recent"> Crawl news from companies you care about. </div></h2>
+        <h3><small>검색어를 입력하세요</small></h3>
+                <div class="col-lg mx-auto">
+                <!-- form 구현 -->
+                {% comment %} <form action="{% url 'search' %}" method = "get" > {% endcomment %}
+                <form action="/post/search_result/" method = "get" class="form-inline">
+                    {% comment %} <div class="form-row"> {% endcomment %}
+                        <div class="col-md-12 col-md-9 mb-2 mb-md-0">
+                            <input type="text" name="search" id="search"
+                                class="form-control form-control-lg"
+                                placeholder="Search" required autofocus>
+                            </input>
+                        </div>
+                        <div class="col-12 col-md-9 mb-2 mb-md-0">
+                        <input type="submit" class="btn btn-xs btn-primary" value="search"></button>
+                        </div>
+    </div>
+</div>
+
+{% endblock%}
