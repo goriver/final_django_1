@@ -21,11 +21,11 @@ sk 모듈proj django web(final)
   
 ***
 ex) django 구현 웹 모습
-<img src ="https://user-images.githubusercontent.com/50822293/93714790-f1017d80-fb9f-11ea-8df1-e1c1cf870edc.png" width="40%"></src>
-<img src ="https://user-images.githubusercontent.com/50822293/93714794-f4950480-fb9f-11ea-8343-fd3a9add20a5.png" width="40%"></src>
-<img src ="https://user-images.githubusercontent.com/50822293/93714798-f6f75e80-fb9f-11ea-970f-8ba2e3d7c287.png" width="40%"></src>
-<img src ="https://user-images.githubusercontent.com/50822293/93714799-f8288b80-fb9f-11ea-873c-e16754d69965.png" width="40%"></src>
-<img src ="https://user-images.githubusercontent.com/50822293/93714803-fa8ae580-fb9f-11ea-9d3e-6e1f0f462237.png" width="40%"></src>
-<img src ="https://user-images.githubusercontent.com/50822293/93714807-ffe83000-fb9f-11ea-8703-8313585da583.png" width="40%"></src>
-<img src ="https://user-images.githubusercontent.com/50822293/93714804-fc54a900-fb9f-11ea-9345-e3e683f5bf3e.png" width="40%"></src>
-*설명추가하기!*
+* <img src ="https://user-images.githubusercontent.com/50822293/93714790-f1017d80-fb9f-11ea-8df1-e1c1cf870edc.png" width="40%"></src>
+* <img src ="https://user-images.githubusercontent.com/50822293/93714794-f4950480-fb9f-11ea-8343-fd3a9add20a5.png" width="40%"></src>
+* <img src ="https://user-images.githubusercontent.com/50822293/93714798-f6f75e80-fb9f-11ea-970f-8ba2e3d7c287.png" width="40%"></src>
+* <img src ="https://user-images.githubusercontent.com/50822293/93714799-f8288b80-fb9f-11ea-873c-e16754d69965.png" width="40%"></src>
+* <img src ="https://user-images.githubusercontent.com/50822293/93714803-fa8ae580-fb9f-11ea-9d3e-6e1f0f462237.png" width="40%"></src>
+* <img src ="https://user-images.githubusercontent.com/50822293/93714807-ffe83000-fb9f-11ea-8703-8313585da583.png" width="40%"></src>
+* <img src ="https://user-images.githubusercontent.com/50822293/93714804-fc54a900-fb9f-11ea-9345-e3e683f5bf3e.png" width="40%"></src>
+- *설명추가하기!*
