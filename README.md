@@ -4,20 +4,20 @@ sk 모듈proj django web(final)
 
 ## 사용 모듈
 1. __fbprophet__
-  - fbprophet : facebook 제작
-  - 오류가 진짜 많음
-  - python 3.5에서 구동하는 것을 추천
-  - pystan 설치후 python 설치(pystan은 1.6이 제일 안정적인 듯 함)   
+    - fbprophet : facebook 제작
+    - 오류가 진짜 많음
+    - python 3.5에서 구동하는 것을 추천
+    - pystan 설치후 python 설치(pystan은 1.6이 제일 안정적인 듯 함)   
       
 2. __lstm__
-  - [lstm 참고 블로그](https://brunch.co.kr/@chris-song/9)
+    - [lstm 참고 블로그](https://brunch.co.kr/@chris-song/9)
   
 3. __django web__
-  - 차트의 경우 chartjs 사용
-  - 잔재미코딩의 clean-blog의 css사용
-  - 부트스트랩 3, 4 사용
-  - 그래프의 경우 bootstrap4사용
-  - __규모가 이렇게 커질 줄 모르고 app으로 카테고리 구분하여 수행하지 않고, 한개의 app에 다 넣었음.__ *그래서 보기 불편함*
+    - 차트의 경우 chartjs 사용
+    - 잔재미코딩의 clean-blog의 css사용
+    - 부트스트랩 3, 4 사용
+    - 그래프의 경우 bootstrap4사용
+    - __규모가 이렇게 커질 줄 모르고 app으로 카테고리 구분하여 수행하지 않고, 한개의 app에 다 넣었음.__ *그래서 보기 불편함*
   
 ***
 ex) django 구현 웹 모습
