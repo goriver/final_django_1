@@ -284,7 +284,8 @@ def moreinfo_out(request):
 
     from_email_address =  'bziwnsizd@gmail.com' #발신자
     # to_email_address = ['bziwnsizd@gmail.com','ka030202@kookmin.ac.kr','songteagyong@gmail.com','brttomorrow77@gmail.com'] #수신자리스트
-    to_email_address.append(email)
+    # to_email_address.append(email)
+
 
     emailSender.send_message(emailHTMLContent, from_email_address, email)
 
@@ -304,7 +305,7 @@ def conv_stock(stock_name):
         cate='.KS'
     elif category =="코스닥":
         cate=".KQ"
-    # print(stock_num+cate)
+    print(stock_num+cate)
     code=stock_num+cate
     
     return code
