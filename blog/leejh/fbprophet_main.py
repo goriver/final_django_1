@@ -26,10 +26,10 @@ import os
 # pass
 corporation = ['034730', '003550','030200','035720','005930','035420']
 # fbpro = PredictByProphet.main()
-# today = datetime.datetime.today() 
-# date = today.strftime('%Y%m%d') 
-# date = int(date)
-date = 20200917
+today = datetime.datetime.today() 
+date = today.strftime('%Y%m%d') 
+date = int(date)
+# date = 20200917
 pd.set_option('mode.chained_assignment',  None)
 
 chart_am = []
