@@ -26,15 +26,16 @@ import os
 # pass
 corporation = ['034730', '003550','030200','035720','005930','035420']
 # fbpro = PredictByProphet.main()
-today = datetime.datetime.today() 
-date = today.strftime('%Y%m%d') 
-date = int(date)
+# today = datetime.datetime.today() 
+# date = today.strftime('%Y%m%d') 
+# date = int(date)
+date = 20200917
 pd.set_option('mode.chained_assignment',  None)
 
 chart_am = []
 chart_pm = []
 # using_fbprophet.
-for index_code in corporation:
+for n, index_code in enumerate(corporation):
     
     # temp, what_day = make_am_data(index_code, 20200917)
     temp, what_day = make_am_data(index_code, int(date))
@@ -88,8 +89,10 @@ for index_code in corporation:
     fig.add_trace(go.Scatter(x=am_pred['ds'],y=am_pred['yhat'],
                 mode='lines+markers', name='예측값'))
     # fig.update_layout(title='<b>해당 요일 오전의 예측 주가</b>')
-    index_code_A = index_code+"_AM"
+    # index_code_A = index_code+"_AM"
     dict_am = {}
+    company = ['SK','LG','KT','KAKAO','SAMSUNG','NAVER']
+    index_code_A = company[n]+"_AM"
     dict_am["name"] = index_code_A
     dict_am["x"] = am['index'].tolist()
     # dict_am["x"] = am['ds'].astype(str).tolist()
@@ -104,7 +107,8 @@ for index_code in corporation:
                 mode='lines+markers', name='예측값'))
     # fig.update_layout(title='<b>해당 요일 오후의 예측 주가</b>')
     dict_pm = {}
-    index_code_P = index_code+"_PM"
+    company = ['SK','LG','KT','KAKAO','SAMSUNG','NAVER']
+    index_code_P = company[n]+"_PM"
     dict_pm["name"] = index_code_P
     dict_pm["x"] = pm['index'].tolist()
     dict_pm["y"] = pm_pred['yhat'].astype(float).tolist()

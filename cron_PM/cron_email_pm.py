@@ -10,41 +10,41 @@ from email.mime.image import MIMEImage
 from IPython.display import Image
 #알고리즘 자동화
 import sqlite3
-from cron_lstm import main_lstm
-from cron_prophet import main_fbpropet
+# from cron_lstm import main_lstm
+from cron_prophet import fb_main_pm
 import numpy as np
 from datetime import datetime, timedelta
 
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class EmailHTMLContent:
 
     # 이메일에 담길 컨텐츠
-    def __init__(self, str_subject, str_image_file_list ,template, template_params_list):
+    def __init__(self, str_subject, str_image_file_name ,template, template_params1, template_params2, template_params3):
         #string template과 딕셔너리형 template_params를 받아 MIME 메세지 생성
         # assert 조건, 메세지
         assert isinstance(template, Template)
-        for template_params in template_params_list:
-            assert isinstance(template_params, dict)
+        assert isinstance(template_params1, dict)
+        assert isinstance(template_params2, dict)
+        assert isinstance(template_params3, dict)
         self.msg = MIMEMultipart()
         
         # 이메일 제목 설정
         self.msg['Subject'] = str_subject
         
         # 이메일 본문 설정
-        str_msg = template.safe_substitute(**template_params) # ${변수} 치환하며 문자열 만듬
+        str_msg = template.safe_substitute(**template_params1, **template_params2, **template_params3) # ${변수} 치환하며 문자열 만듬
         mime_msg = MIMEText(str_msg, 'html') # MIME HTML 문자열 만듬
         self.msg.attach(mime_msg)
         
-        for n, str_image_file_name in enumerate(str_image_file_list):
-            # str_cid_name{}
-            assert template.template.find("cid:" + str_cid_name[n]) >= 0, 'template must have cid for embedded image.'
-            assert os.path.isfile(str_image_file_name), 'image file does not exist.'
-            with open(str_image_file_name, 'rb') as img_file:
-                mime_img = MIMEImage(img_file.read())
-                mime_img.add_header('Content-ID', '<' +str_cid_name[n] + '>')
-            self.msg.attach(mime_img)        
+
+        assert template.template.find("cid:" + str_cid_name) >= 0, 'template must have cid for embedded image.'
+        assert os.path.isfile(str_image_file_name), 'image file does not exist.'
+        with open(str_image_file_name, 'rb') as img_file:
+            mime_img = MIMEImage(img_file.read())
+            mime_img.add_header('Content-ID', '<' +str_cid_name + '>')
+        self.msg.attach(mime_img)  
         
     def get_message(self, from_email_address, to_email_address):
         # 발신자, 수신자 리스트를 이용하여 보낼 메세지를 만든다
@@ -90,32 +90,8 @@ def conv_stock(stock_name):
     return code
 
 def error_email(comp_name, key):
-    str_host = 'smtp.gmail.com'
-    num_port = 587
-    emailSender = EmailSender(str_host, num_port)
-
-    error = BASE_DIR + '\\cron\\img\\closing_stock\\ERROR.png'
-
-    str_subject = '죄송합니다. 에러가 발생하였습니다.' # e메일 제목
-    template = Template("""<html>
-                                <head></head>
-                                <body>
-                                    기업명 ${NAME}.<br>
-                                    <img src="cid:my_image"> <br>
-                                    죄송합니다.<br>
-                                    등록하신 기업의 경우 신규 종목 또는 비상장기업으로 서비스가 어렵습니다.<br>
-                                    더 노력하는 predict stock이 되도록 하겠습니다. 감사합니다.<br>
-                                </body>
-                            </html>""")
-    template_params = {'NAME':comp_name }
-    str_image_file_name = error
-    str_cid_name = 'my_image'
-    emailHTMLContent = EmailHTMLContent(str_subject, str_image_file_name, template, template_params)
-
-    from_email_address =  'bziwnsizd@gmail.com' #발신자
-    to_email_address = key #,'ka030202@kookmin.ac.kr','songteagyong@gmail.com','brttomorrow77@gmail.com'] #수신자리스트
-    # keys : for문 돌린 email값 출력 ka030202@naver.com
-    emailSender.send_message(emailHTMLContent, from_email_address, to_email_address)
+    print("=======에러=========")
+    pass
 
 
 # DB 내용 출력
@@ -185,19 +161,20 @@ for key, value in output.items(): # db_comp = 기업 정보들
         error_result = ""
         try:
             print(corp)
-            # value = corp[0]
-            # print(type(value))
             event = conv_stock(corp)
-            #cron_prophet.py 에 입력값 : 기업종목 (날짜의 경우 cron_prophet에서 가져감.)
-            real1, real2 = main_fbpropet(event)
+
+            real_event = event[:6]
+            real1, real2 = fb_main_pm(real_event)
+            # print("real stock가능", real1, real2)
+            # real1 = "test1"
+            # real2 = "test2"
 
             # 이메일 전송 시작
 
             # 이메일에 보낼 기업에 대한 이미지 정보 jpg
             # 기업별로 email 전송
-            closing = BASE_DIR + '\\cron\\img\\closing_stock\\closing_img.png'
-            real_am = BASE_DIR + '\\cron\\img\\real_time\\weekend_to_am.png'
-            # real_pm = BASE_DIR + '\\cron\\img\\real_time\\weekend_to_pm.png'
+            real_am = BASE + '\\cron_PM\\img\\real_time\\am_plot.png'
+            real_pm = BASE + '\\cron_PM\\img\\real_time\\pm_plot.png'
 
             str_host = 'smtp.gmail.com'
             num_port = 587
@@ -210,30 +187,30 @@ for key, value in output.items(): # db_comp = 기업 정보들
                                         <body>
                                             기업명 ${NAME}.<br>
                                             <img src="cid:my_image1"> <br>
-                                            차일 종가 예측 결과값 : ${tommrow} 입니다.<br>
-                                            <img src="cid:my_image2"> <br>
-                                            해당 종목의 오전 추천 매수가는 ${real1} 입니다.<br>
-                                            해당 종목의 오전 추천 매수가는 ${real2} 입니다.<br>
+                                            해당 종목의 오후 추천 매수가는 ${real1} 입니다.<br>
+                                            해당 종목의 오후 추천 매수가는 ${real2} 입니다.<br>
                                             테스트입니다.
                                         </body>
                                     </html>""")
-            template_params1 = {'NAME':value}
-            template_params2 = {'tommrow' : tomorrow_prediction}
-            template_params3 = {'real1': real1}
-            template_params4 = {'real2': real2}
-            str_image_file_name1 = closing
-            str_image_file_name2 = real_am
-            # str_image_file_name3 = real_pm
-            str_cid_name = ['my_image1', 'my_image2']
-            str_image_file_list = [str_image_file_name1, str_image_file_name2, str_image_file_name3]
-            template_params_list = [template_params1, template_params2, template_params3, template_params4]
+            template_params1 = {'NAME':corp}
+            template_params2 = {'real1': real1}
+            template_params3 = {'real2': real2}
+            str_image_file_name = real_pm
+            str_cid_name = 'my_image1' # 오후 종가 예측
 
-            emailHTMLContent = EmailHTMLContent(str_subject, str_image_file_list, template, template_params_list)
+            emailHTMLContent = EmailHTMLContent(str_subject, str_image_file_name, template, template_params1, template_params2, template_params3)
 
             from_email_address =  'bziwnsizd@gmail.com' #발신자
             to_email_address = key 
             emailSender.send_message(emailHTMLContent, from_email_address, to_email_address)
 
+            os.remove(real_am)
+            os.remove(real_pm)
+
         # 비상장 기업 or 신규 기업 or 크롤링 불가
         except ValueError: 
-            error_email(value,key)
+            error_email(corp,key)
+        except AttributeError: 
+            error_email(corp,key)
+        else:
+            error_email(corp,key)

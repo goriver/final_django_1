@@ -22,7 +22,7 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent
 
-#tf.set_random_seed(777) #랜덤한 값을 다른 컴퓨터에도 동일하게 얻을 수 있게함
+tf.set_random_seed(777) #랜덤한 값을 다른 컴퓨터에도 동일하게 얻을 수 있게함
 #tf.random.set_seed(777)
 
 #Min-Max scaling
@@ -37,6 +37,8 @@ def reverse_min_max_scaling(org_x, x):
     return (x_np * (org_x_np.max() - org_x_np.min() + 1e-7)) + org_x_np.min()
 
 def main_lstm(corp):
+
+    plt.clf() # Clear the current figure
     yf.pdr_override()
     #hiper parameter
     input_dcm_cnt = 6 #입력데이터의 컬럼 개수

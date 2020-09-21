@@ -3,7 +3,8 @@
 <div class="container">
     <form action="/post/moreinfo_out/" method="GET">
         {% comment %} {% csrf_token %} {% endcomment %}
-        <h2 class="recent">email 등록하고 주식정보 알아가세요~</h2>
+        <h2 class="recent">email 등록하고 주식정보 알아가세요~</h2><br>
+        <h5 class="recent" style="color: #ED7E6D;">비상장 or 신규 상장 기업은 예측이 어렵습니다.</h5><br>
         <div class="container">
             <div class="form-group">
                 <label for="input-title">EMAIL : </label>
@@ -11,7 +12,7 @@
             </div>
             <div class="form-group">
                 <label for="input-title"> INTERESTED COMPANY : </label>
-                <input name="content" id="content" class="form-control"  placeholder="ex) 카카오 게임즈">{{ content }}</input>
+                <input name="content" id="content" class="form-control"  placeholder="1년 이상 상장기업만 등록해주세요">{{ content }}</input>
             </div>
             <div class="form-group">
                 <input type="checkbox" name="publish" id="publish" value="True">  개인정보 허용하기</input>
