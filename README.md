@@ -1,6 +1,10 @@
 # final_django_1
 sk 모듈proj django web(final)
 
+## 프로젝트 배경
+- 코로나로 인한 주식 시장의 불안정성으로 인한 개인 투자자 증가
+- 개인 투자자에게 주식 insight 제공을 위한 페이지 제작
+- 구독 서비스를 통한 일별 주식 데이터 제공
 
 ## 사용 모듈 및 기술
 1. __fbprophet__
@@ -46,4 +50,3 @@ sk 모듈proj django web(final)
 * <img src ="https://user-images.githubusercontent.com/50822293/93714803-fa8ae580-fb9f-11ea-9d3e-6e1f0f462237.png" width="40%"></src>
 * <img src ="https://user-images.githubusercontent.com/50822293/93714807-ffe83000-fb9f-11ea-8703-8313585da583.png" width="40%"></src>
 * <img src ="https://user-images.githubusercontent.com/50822293/93714804-fc54a900-fb9f-11ea-9345-e3e683f5bf3e.png" width="40%"></src>
-- *설명추가하기!*
