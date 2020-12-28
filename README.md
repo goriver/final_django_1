@@ -1,5 +1,5 @@
 # final_django_1
-sk 모듈proj django web(final)
+**sk 모듈 project3차(final ver)**
 
 ## 프로젝트 배경
 - 코로나로 인한 주식 시장의 불안정성으로 인한 개인 투자자 증가
